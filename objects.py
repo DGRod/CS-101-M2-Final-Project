@@ -56,17 +56,17 @@ class Country:
         return self.name + " is a country in " + self.region
 
 
-north_america = LinkedList("North America Region")
-south_america = LinkedList("South America Region")
-carribean = LinkedList("Carribean Region")
-europe = LinkedList("Europe Region")
-middle_east = LinkedList("Middle East Region")
-north_africa = LinkedList("North Africa Region")
-sub_saharan_africa = LinkedList("Sub-Saharan Africa Region")
-central_asia = LinkedList("Central Asia Region")
-south_asia = LinkedList("South Asia Region")
-east_asia = LinkedList("East Asia Region")
-oceania = LinkedList("Oceania Region")
+north_america = LinkedList("North America")
+south_america = LinkedList("South America")
+carribean = LinkedList("Carribean")
+europe = LinkedList("Europe")
+middle_east = LinkedList("Middle East")
+north_africa = LinkedList("North Africa")
+sub_saharan_africa = LinkedList("Sub-Saharan Africa")
+central_asia = LinkedList("Central Asia")
+south_asia = LinkedList("South Asia")
+east_asia = LinkedList("East Asia")
+oceania = LinkedList("Oceania")
 
 regions = ["North America", "South America", "Carribean", "Europe", "Middle East", "North Africa", "Sub-Saharan Africa", "Central Asia", "South Asia", "East Asia", "Oceania"]
 linked_lists = [north_america, south_america, carribean, europe, middle_east, north_africa, sub_saharan_africa, central_asia, south_asia, east_asia, oceania]
@@ -89,4 +89,4 @@ regional_list = LinkedList("Regional List")
 for list in linked_lists:
     regional_list.add_head(list)
 
-middle_east.traverse()
+#middle_east.traverse()
