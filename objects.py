@@ -53,7 +53,7 @@ class Country:
         self.gdp = gdp
 
     def __repr__(self):
-        return self.name + " is a country in " + self.region
+        return self.name
 
 
 north_america = LinkedList("North America")
