@@ -89,4 +89,3 @@ regional_list = LinkedList("Regional List")
 for list in linked_lists:
     regional_list.add_head(list)
 
-#middle_east.traverse()

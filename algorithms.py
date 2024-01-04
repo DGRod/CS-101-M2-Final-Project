@@ -1,6 +1,6 @@
 from objects import regional_list, north_africa, LinkedList
 
-
+#Search Linked List for a target value
 def search_list(linked_list, target):
     current_node = linked_list.head_node
 
@@ -11,6 +11,7 @@ def search_list(linked_list, target):
 
     return None
 
+#Search a 2-dimensional Linked List for a target value
 def dfs(double_linked_list, target):
     current_sublist = double_linked_list.head_node
 
@@ -24,6 +25,7 @@ def dfs(double_linked_list, target):
     print("\nCountry not found")
     return None
 
+#Search a 2-dimensional Linked List for strings with matching initial characters
 def search_substring(double_linked_list, substring):
     matching_strings = []
 
@@ -40,7 +42,7 @@ def search_substring(double_linked_list, substring):
     return matching_strings
 
 
-
+#Determine which type of data the user would like to retrieve
 def find_data(double_linked_list, target, data):
     country = dfs(double_linked_list, target)
     processed_data = (data.strip()).title()
@@ -52,7 +54,7 @@ def find_data(double_linked_list, target, data):
    
     return "Available information for " + target + ":\nPopulation\nRegion\nArea\nGDP\nPlease select one of these options."
     
-
+#Return the appropriate data depending on the request
 def printer(country, result, data_initial):
     if data_initial == "P":
         print("The population of " + country + " is: " + result)
@@ -64,16 +66,12 @@ def printer(country, result, data_initial):
         print(country + " has a GDP of " + result)
 
 
-
-#search_list(regional_list, "North Africa").traverse()
-
-#print(dfs(regional_list, "Kosovo"))
-
+#Initialization
 welcome = "Welcome to the Python Country Database!"
 print(welcome)
 
+#Search loop will continue until the user exits the database
 continue_search = True
-
 while continue_search == True:
 
     country = input("What country would you like to search for?\n").title()
