@@ -24,6 +24,22 @@ def dfs(double_linked_list, target):
     print("\nCountry not found")
     return None
 
+def search_substring(double_linked_list, substring):
+    matching_strings = []
+
+    current_sublist = double_linked_list.head_node
+
+    while current_sublist:
+        current_node = current_sublist.value.head_node
+        while current_node:
+            if current_node.value.name[0:len(substring)] == substring.title():
+                matching_strings.append(current_node.value.name)
+            current_node = current_node.get_next_node()
+        current_sublist = current_sublist.get_next_node()
+    
+    return matching_strings
+
+
 
 def find_data(double_linked_list, target, data):
     country = dfs(double_linked_list, target)
@@ -56,31 +72,46 @@ def printer(country, result, data_initial):
 welcome = "Welcome to the Python Country Database!"
 print(welcome)
 
-country = input("What country would you like to search for?\n").title()
-country_exists = dfs(regional_list, country)
+continue_search = True
 
-while country_exists == None:
-    country = input("Please enter the name of a recognized country:\n").title()
+while continue_search == True:
+
+    country = input("What country would you like to search for?\n").title()
     country_exists = dfs(regional_list, country)
-    if country_exists != None:
-        break
-    continue
+
+    while country_exists == None:
+        possibilities = search_substring(regional_list, country)
+        if possibilities:
+            print("Did you mean one of these: ")
+            for row in possibilities:
+                print(row)
+        country = input("Please enter the name of a recognized country:\n").title()
+        country_exists = dfs(regional_list, country)
+        if country_exists != None:
+            break
+        continue
 
 
-initials = ["P", "R", "A", "G"]
-data = input("\nWhat information about " + country.title() + " would you like?\nYou can find the Population, Region, Area, or GDP\n")
-data_exists = data.title()[0] in initials
-
-while data_exists == False:
-    data = input("\nAvailable information for " + country + ":\nPopulation\nRegion\nArea\nGDP\n\nPlease select one of these options:\n")
+    initials = ["P", "R", "A", "G"]
+    data = input("\nWhat information about " + country.title() + " would you like?\nYou can find the Population, Region, Area, or GDP\n")
     data_exists = data.title()[0] in initials
-    if data_exists == True:
-        break
-    continue
+
+    while data_exists == False:
+        data = input("\nAvailable information for " + country + ":\nPopulation\nRegion\nArea\nGDP\n\nPlease select one of these options:\n")
+        data_exists = data.title()[0] in initials
+        if data_exists == True:
+            break
+        continue
 
 
-rd = find_data(regional_list, country, data)
+    rd = find_data(regional_list, country, data)
 
-printer(country, rd[0], rd[1])
+    printer(country, rd[0], rd[1])
 
+    cont = input("Would you like to continue searching the database? (y/n)\n")
+    if (cont.strip()).title()[0] == "N":
+        continue_search = False
 
+exit_msg = "\nThank you for using the Python Country Database!"
+
+print(exit_msg)
